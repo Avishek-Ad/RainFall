@@ -27,7 +27,7 @@ app.use("/api/chat", chatRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-  app.get("/", (req, res) => {
+  app.all("/{*any}", (req, res) => {
     res.sendFile(path.join(__dirname, "../Frontend", "dist", "index.html"));
   });
 }
